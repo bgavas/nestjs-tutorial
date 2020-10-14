@@ -1,6 +1,6 @@
 import {
     BaseEntity, Column, CreateDateColumn, Entity,
-    PrimaryGeneratedColumn, UpdateDateColumn
+    PrimaryGeneratedColumn, Timestamp, UpdateDateColumn
 } from "typeorm";
 
 @Entity()
@@ -18,10 +18,10 @@ export class Task extends BaseEntity {
     status: TaskStatus
 
     @CreateDateColumn()
-    createdAt
+    createdAt: Timestamp
 
     @UpdateDateColumn()
-    updatedAt
+    updatedAt: Timestamp
 }
 
 export enum TaskStatus {
