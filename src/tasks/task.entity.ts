@@ -1,5 +1,7 @@
+import { User } from "src/auth/user.entity";
 import {
     BaseEntity, Column, CreateDateColumn, Entity,
+    ManyToOne,
     PrimaryGeneratedColumn, Timestamp, UpdateDateColumn
 } from "typeorm";
 
@@ -22,6 +24,12 @@ export class Task extends BaseEntity {
 
     @UpdateDateColumn()
     updatedAt: Timestamp
+
+    @ManyToOne(() => User, user => user.tasks)
+    user: User
+
+    @Column()
+    userId: number
 }
 
 export enum TaskStatus {
