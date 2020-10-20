@@ -70,8 +70,8 @@ describe('TasksService', () => {
         it('fails as task is not found', async () => {
             const mockTask = { id: 1, title: 'Test Title', description: 'Test description' };
             taskRepository.findOne.mockResolvedValue(null);
-            
-            expect(tasksService.getTaskById(mockTask.id, mockUser)).rejects
+
+            await expect(tasksService.getTaskById(mockTask.id, mockUser)).rejects
                 .toThrow(new NotFoundException(`Task with id ${mockTask.id} not found`));
         });
     });
@@ -114,8 +114,8 @@ describe('TasksService', () => {
         it('fails as task is not found', async () => {
             tasksService.getTaskById = jest.fn().mockResolvedValue(null);
             const mockTask = { id: 1, title: 'Test Title', description: 'Test description' };
-            
-            expect(tasksService.deleteTask(mockTask.id, mockUser)).rejects
+
+            await expect(tasksService.deleteTask(mockTask.id, mockUser)).rejects
                 .toThrow(new NotFoundException(`Task with id ${mockTask.id} not found`));
         });
     });
@@ -144,8 +144,8 @@ describe('TasksService', () => {
         it('fails as task is not found', async () => {
             tasksService.getTaskById = jest.fn().mockResolvedValue(null);
             const mockTask = { id: 1, title: 'Test Title', description: 'Test description' };
-            
-            expect(tasksService.updateTaskStatus(mockTask.id, TaskStatus.DONE, mockUser)).rejects
+
+            await expect(tasksService.updateTaskStatus(mockTask.id, TaskStatus.DONE, mockUser)).rejects
                 .toThrow(new NotFoundException(`Task with id ${mockTask.id} not found`));
         });
     });
