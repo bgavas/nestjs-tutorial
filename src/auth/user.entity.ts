@@ -30,6 +30,7 @@ export class User extends BaseEntity {
     tasks: Task[]
 
     async validatePassword(password: string): Promise<boolean> {
-        return await bcrypt.compare(password, this.password);
+        const result = await bcrypt.compare(password, this.password);
+        return !!result;
     }
 }

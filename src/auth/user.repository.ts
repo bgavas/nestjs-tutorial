@@ -36,7 +36,7 @@ export class UserRepository extends Repository<User> {
             return user.username;
         }
 
-        return null
+        return null;
     }
 
     private async hashPassword(password: string, salt: string): Promise<string> {
